@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.4d89a996.css",
-    "main.js": "/static/js/main.21fec8f6.js",
-    "static/js/787.774c4d99.chunk.js": "/static/js/787.774c4d99.chunk.js",
-    "static/media/ethereum-currency-main.jpg": "/static/media/ethereum-currency-main.163ad3c424c7f8386831.jpg",
-    "index.html": "/index.html",
-    "main.4d89a996.css.map": "/static/css/main.4d89a996.css.map",
-    "main.21fec8f6.js.map": "/static/js/main.21fec8f6.js.map",
-    "787.774c4d99.chunk.js.map": "/static/js/787.774c4d99.chunk.js.map"
+    "main.css": "/wallet-app/static/css/main.4d89a996.css",
+    "main.js": "/wallet-app/static/js/main.dc5664bb.js",
+    "static/js/787.774c4d99.chunk.js": "/wallet-app/static/js/787.774c4d99.chunk.js",
+    "static/media/ethereum-currency-main.jpg": "/wallet-app/static/media/ethereum-currency-main.163ad3c424c7f8386831.jpg",
+    "index.html": "/wallet-app/index.html",
+    "main.4d89a996.css.map": "/wallet-app/static/css/main.4d89a996.css.map",
+    "main.dc5664bb.js.map": "/wallet-app/static/js/main.dc5664bb.js.map",
+    "787.774c4d99.chunk.js.map": "/wallet-app/static/js/787.774c4d99.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4d89a996.css",
-    "static/js/main.21fec8f6.js"
+    "static/js/main.dc5664bb.js"
   ]
 }
