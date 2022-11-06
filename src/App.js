@@ -15,7 +15,6 @@ function App() {
       <div className="body">
         <Info />
       </div>
-      
     </Web3ReactProvider>
   );
 }
