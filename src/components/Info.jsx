@@ -89,7 +89,7 @@ function Info() {
               style={{ borderRadius: "50%" }}
             />
             {active ? (
-              <p style={{ color: "#e12" }}>
+              <p style={{ color: "rgb(183 158 160)" }}>
                 {account + " "}
                 <FontAwesomeIcon
                   style={{ cursor: "pointer" }}
