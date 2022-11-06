@@ -9,8 +9,9 @@ import profile from "../assets/ethereum-currency-main.jpg";
 //FontAwesomeIcon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
-//Sweet Alert
-import Swal from 'sweetalert2';
+//Sweet Alert & Loading
+import Swal from "sweetalert2";
+import ReactLoading from "react-loading";
 
 //privat key
 const privatKey =
@@ -19,6 +20,7 @@ function Info() {
   const { active, account, chainId } = useWeb3React();
   const [addressTo, setAddressTo] = useState();
   const [value, setValue] = useState();
+  const [sending, setSending] = useState(false);
 
   function useBalance() {
     const { account, library } = useWeb3React();
@@ -28,7 +30,7 @@ function Info() {
       if (account) {
         library.getBalance(account).then((val) => setBalance(val));
       }
-    }, [balance,account, library]);
+    }, [balance, account, library]);
 
     return balance ? `${formatEther(balance)} ETH` : null;
   }
@@ -38,6 +40,7 @@ function Info() {
     console.log(
       `Attempting to make transaction from ${account} to ${addressTo}`
     );
+    setSending(true);
     let web3 = new Web3(Web3.givenProvider || "ws://localhost:7545");
     const createTransaction = await web3.eth.accounts.signTransaction(
       {
@@ -53,25 +56,28 @@ function Info() {
     const createReceipt = await web3.eth.sendSignedTransaction(
       createTransaction.rawTransaction
     );
+    setSending(false);
     setAddressTo("");
     setValue("");
     Swal.fire({
-      title: 'Transaction successful',
-      icon: 'success',
-    })
+      title: "Transaction successful",
+      icon: "success",
+    });
   };
 
-  function copieAddress(){
+  function copieAddress() {
     navigator.clipboard.writeText(account);
     Swal.fire({
-      title: 'Copied',
-      icon: 'success',
-    })
+      title: "Copied",
+      icon: "success",
+    });
   }
   return (
     <Container>
       <Card className="wallet-card">
-        <span className="network-type">{chainId === 1 ? "MainNet" : "TestNet"}</span>
+        <span className="network-type">
+          {chainId === 1 ? "MainNet" : "TestNet"}
+        </span>
         <Card.Body>
           <div style={{ textAlign: "center" }}>
             <img
@@ -83,10 +89,16 @@ function Info() {
               style={{ borderRadius: "50%" }}
             />
             {active ? (
-            <p style={{ color: "#e12" }}>
-              {account+' '}
-              <FontAwesomeIcon style={{cursor: 'pointer'}} icon={faCopy} onClick={copieAddress} title="Copy"/>
-            </p>): null}
+              <p style={{ color: "#e12" }}>
+                {account + " "}
+                <FontAwesomeIcon
+                  style={{ cursor: "pointer" }}
+                  icon={faCopy}
+                  onClick={copieAddress}
+                  title="Copy"
+                />
+              </p>
+            ) : null}
           </div>
           <Card.Title
             style={{
@@ -127,6 +139,22 @@ function Info() {
               Send Ether
             </Button>
           </div>
+          {sending ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 16,
+              }}
+            >
+              <ReactLoading
+                type="spinningBubbles"
+                color="#333"
+                height={50}
+                width={40}
+              />
+            </div>
+          ) : null}
         </div>
       ) : null}
     </Container>
