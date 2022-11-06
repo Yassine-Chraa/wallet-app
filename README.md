@@ -27,7 +27,7 @@
 
 ## :dart: About ##
 This is a Wallet application build with React and Web3-React
-
+demo: https://yassine-chraa.github.io/wallet-app/
 
 
 
