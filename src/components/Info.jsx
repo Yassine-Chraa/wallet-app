@@ -75,9 +75,11 @@ function Info() {
   return (
     <Container>
       <Card className="wallet-card">
-        <span className="network-type">
-          {chainId === 1 ? "MainNet" : "TestNet"}
-        </span>
+        {chainId ? (
+          <span className="network-type">
+            {chainId === 1 ? "MainNet" : "TestNet"}
+          </span>
+        ) : null}
         <Card.Body>
           <div style={{ textAlign: "center" }}>
             <img
